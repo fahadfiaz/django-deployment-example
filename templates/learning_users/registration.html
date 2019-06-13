@@ -1,0 +1,25 @@
+{% extends 'learning_users/base.html' %}
+{% load staticfiles %}
+{% block body %}
+    <div class="jumbotron">
+    {% if registered %}
+        <h2>Thank you for registering!</h2>
+
+    {% else %}
+    <h1 style="font-style: italic">Register Here</h1>
+    <h2 style="font-style: italic">Fill out the form:</h2>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" value="Register">
+    </form>
+
+
+    {% endif %}
+
+
+    </div>
+
+{% endblock %}
